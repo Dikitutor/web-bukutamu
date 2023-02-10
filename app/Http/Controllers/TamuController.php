@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class TamuController extends Controller
 {
     public function index(){
-        $tamu = Tamu::paginate(5);
+        $tamu = Tamu::latest()->paginate(5);
         return view('home',compact(['tamu']));
     }
 
