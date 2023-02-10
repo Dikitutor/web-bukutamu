@@ -22,7 +22,7 @@
 
  <div class="d-flex justify-content-end">
       <a href="/tambah" class="btn btn-primary">Tambah Tamu</a>
-  </div>
+ </div>
  
   <table class="table table-bordered mt-3">
     <thead>
