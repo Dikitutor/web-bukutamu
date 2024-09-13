@@ -9,7 +9,7 @@ class TamuController extends Controller
 {
     public function index(){
         $tamu = Tamu::latest()->paginate(5);
-        return view('home',compact(['tamu']));
+        return view('home', compact(['tamu']));
     }
 
     public function create(){
@@ -17,24 +17,35 @@ class TamuController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request->all());
-        $this->validate($request,[
-                'nama' => 'required',
-                'no_telepon' => 'required'
+        // Validasi input termasuk tanggal
+        $this->validate($request, [
+            'nama' => 'required',
+            'no_telepon' => 'required',
+            'alamat' => 'required',
+            'tanggal' => 'required|date' // Menambahkan validasi untuk tanggal
         ]);
 
-        Tamu::create($request->except(['_token','submit']));
+        // Menyimpan data tamu ke database
+        Tamu::create($request->except(['_token', 'submit']));
         return redirect('/');
     }
 
     public function edit($id){
         $tamu = Tamu::find($id);
-        return view('edit',compact(['tamu']));
+        return view('edit', compact(['tamu']));
     }
 
-    public function update($id,Request $request){
+    public function update($id, Request $request){
+        // Validasi input termasuk tanggal
+        $this->validate($request, [
+            'nama' => 'required',
+            'no_telepon' => 'required',
+            'alamat' => 'required',
+            'tanggal' => 'required|date' // Menambahkan validasi untuk tanggal
+        ]);
+
         $tamu = Tamu::find($id);
-        $tamu->update($request->except(['_token','submit']));
+        $tamu->update($request->except(['_token', 'submit']));
         return redirect('/');
     }
 
@@ -43,5 +54,4 @@ class TamuController extends Controller
         $tamu->delete();
         return redirect('/');
     }
-
 }

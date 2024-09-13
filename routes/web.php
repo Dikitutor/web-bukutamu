@@ -22,9 +22,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/',[TamuController::class,'index']);
-Route::get('/tambah',[TamuController::class,'create']);
-Route::post('/store',[TamuController::class,'store']);
-Route::get('/edit/{id}',[TamuController::class,'edit']);
-Route::put('/{id}',[TamuController::class,'update']);
-Route::get('/delete/{id}',[TamuController::class,'delete']);
+Route::get('/', [TamuController::class, 'index']);
+Route::get('/tambah', [TamuController::class, 'create']);
+Route::post('/store', [TamuController::class, 'store']);
+Route::get('/edit/{id}', [TamuController::class, 'edit']);
+Route::put('/edit/{id}', [TamuController::class, 'update']); // Pastikan ini sesuai dengan action pada form
+Route::get('/delete/{id}', [TamuController::class, 'delete']);
